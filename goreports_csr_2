@@ -1,0 +1,4 @@
+clear
+chmod 400 "../../../keys/x3-devops-managed.pem"
+ssh -i "../../../keys/x3-devops-managed.pem" ubuntu@ec2-52-203-28-241.compute-1.amazonaws.com
+

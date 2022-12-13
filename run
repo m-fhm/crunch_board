@@ -1,0 +1,42 @@
+clear
+cd microfe
+python3 manage.py migrate
+echo $environment
+# 0 ---------------------------------------------- COMMON
+export environment=production
+export NODE_ENV=production
+export PRODUCT_DOMAIN=https://ripe.ai
+export SERVICE_DOMAIN=https://reports.ripe.ai
+export SERVICE_DOMAIN2=http://reports.ripe.ai:7080
+export PRODUCT_ADMIN=admin@ripe.ai
+export PORT=7080
+# export PORT=443
+
+export PLATFORM=ripeai
+export MODULE=ripeai
+export PRODUCT=ripeai
+export SERVICE=reports
+
+echo $environment
+echo $PRODUCT_DOMAIN
+echo $NODE_ENV
+# 0 ---------------------------------------------- COMMON
+
+user='root'
+
+whoami
+
+echo $MODULE
+echo $PRODUCT
+echo $PLATFORM
+
+sudo pm2 list
+sudo pm2 stop csrdashboard
+sudo pm2 delete csrdashboard
+# sudo pm2 delete reports2
+sudo pm2 list
+pwd
+# sudo pm2 start 'python3 manage.py runserver reports.ripe.ai8000  --noreload' --name reports2
+sudo pm2 start 'python3 manage.py runserver reports.ripe.ai:7080 --settings=microfe_main --noreload' --name csrdashboard
+sudo pm2 list
+

@@ -1,0 +1,201 @@
+{% extends "index.html" %}
+{% block content %}
+<form action="automate" method="POST" class="needs-validation" novalidate>
+    {% if quest|length > 0 %}
+      <h1 class="d-flex justify-content-center mb-4">Survey Automation</h1>
+      <!-- {{quest}} -->
+      <ol>
+        {% for questions in quest %}
+          <!-- {{questions}} -->
+          {% if questions.type == 'header-h1'%}  
+            <h1>{{questions.name}}</h1>
+          {%endif%}
+          {% if questions.type == 'select'%} 
+            <h3><li>{{questions.name}}</h3>
+              <div class="row">
+                <div class="col-sm-6">
+                  <select  id="" class="mb-2 form-select">
+                    <option >Open this select menu</option>
+                    {% for options in questions.value %}
+                      <option >{{options.label}}</option>
+                    {% endfor %} 
+                  </select>
+                </div>
+              </div>
+              <div class="row border border-info py-2 my-2">
+                <div class="col-sm-12"> 
+                  <i> Please select how do you like to automate "{{questions.name}}"?</i>
+                  
+                  <ul>
+                      {% for options in questions.value %}
+                      
+                      <li class="border border-info my-2 p-1">
+                        <div class="d-flex ">
+                          <div class="col-sm-6 pt-1">{{options.label}}</div>
+                          <div class="col-sm-6">
+                          <input  type="text" name="{{options.label}}_{{questions.questionCode}}" class="form-control" placeholder="How many responses would you expect from this option please mention number" required>
+                          </div>    
+                        </div>
+                      </li>                  
+                        {% endfor %}
+                  </ul>
+                  <!-- </select> -->
+                </div>
+                <!-- <div class="col-sm-6">
+                  <i>How many time i should post survey:</i>
+                  {% for options in questions.value %}
+                  <input  type="text" name="{{questions.questionCode}}_copies" class="form-control" placeholder="Please Enter Number" required>
+                  <div class="invalid-feedback">
+                    Looks good!
+                  </div>    
+                      {% endfor %} -->
+                  <!-- <i>How many time i should post survey:<input  type="text" name="{{questions.questionCode}}_copies" class="form-control" placeholder="Please Enter Number" required></i>
+                  <div class="invalid-feedback">
+                    Looks good!
+                  </div> -->
+                <!-- </div> -->
+              </div>
+            </li>
+          {%endif%}  
+          {% if questions.type == 'checkbox-group'%}  
+            <h3><li>{{questions.name}}</h3>
+              {% for checkbox in questions.value %}
+                <input type="checkbox"  id="" name="" value="">
+                <label >{{checkbox.label}}</label><br>
+              {% endfor %}
+              <div class="row border border-info py-2 my-2">
+                <div class="col-sm-12"> 
+                  <i> Please select how do you like to automate "{{questions.name}}"?</i>
+                  
+                  <ul>
+                      {% for options in questions.value %}
+                      
+                      <li class="border border-info my-2 p-1">
+                        <div class="d-flex ">
+                          <div class="col-sm-6 pt-1">{{options.label}}</div>
+                          <div class="col-sm-6">
+                          <input  type="text" name="{{options.label}}_{{questions.questionCode}}" class="form-control" placeholder="How many responses would you expect from this option please mention number" required>
+                          </div>    
+                        </div>
+                      </li>                  
+                        {% endfor %}
+                  </ul>
+                  <!-- </select> -->
+                </div>
+                <!-- <div class="col-sm-6"> 
+                  <i> Please select how do you like to automate "{{questions.name}}"?</i>
+                  <select name="{{questions.questionCode}}" class="form-select" id="" required>
+                    <option selected disabled value="">Open this select menu</option>
+                    <option value="randomize">Randomize</option>
+                    {% for checkbox in questions.value %}
+                      <option value="{{checkbox.value}}">{{checkbox.label}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-sm-6">
+                  <i>How many time i should post survey:<input type="text" required name="{{questions.questionCode}}_copies" class="form-control" placeholder="Please Enter Number"></i>
+                </div> -->
+              </div>
+            </li>
+          {%endif%}
+          {% if questions.type == 'radio-group'%}  
+              <h3><li>{{questions.name}}</h3>
+                {% for radio in questions.value %}
+                  <input type="radio" id="" name="" value="">
+                  <label >{{radio.label}}</label><br>
+                {% endfor %}
+                <div class="row border border-info py-2 my-2">
+                  <div class="col-sm-12"> 
+                    <i> Please select how do you like to automate "{{questions.name}}"?</i>
+                    <ul>
+                        {% for options in questions.value %}
+                        <li class="border border-info my-2 p-1">
+                          <div class="d-flex ">
+                            <div class="col-sm-6 pt-1">{{options.label}}</div>
+                            <div class="col-sm-6">
+                            <input  type="text" name="{{options.label}}_{{questions.questionCode}}" class="form-control" placeholder="How many responses would you expect from this option please mention number" required>
+                            </div>    
+                          </div>
+                        </li>                  
+                          {% endfor %}
+                    </ul>
+                    <!-- </select> -->
+                  </div>
+                  <!-- <div class="col-sm-6"> 
+                    <i> Please select how do you like to automate "{{questions.name}}"?</i>
+                    <select name="{{questions.questionCode}}" id="" class="form-select" required>
+                      <option selected disabled >Open this select menu</option>
+                      <option value="">Randomize</option>
+                      {% for radio in questions.value %}
+                        <option value="{{radio.value}}">{{radio.label}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <i>How many time i should post survey:<input required type="text" name="{{questions.questionCode}}_copies" class="form-control" placeholder="Please Enter Number"></i>
+                  </div> -->
+                </div>
+            </li> 
+          {%endif%}
+          {% if questions.type == 'starRating'%}  
+            <h3><li>{{questions.name}}</h3>
+              <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5" />
+                <label for="star5" title="text">5 stars</label>
+                <input type="radio" id="star4" name="rate" value="4" />
+                <label for="star4" title="text">4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3" />
+                <label for="star3" title="text">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label for="star2" title="text">2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label for="star1" title="text">1 star</label>
+              </div>
+            </li><br>
+            <div class="row border border-info py-2 my-2 ">
+              <div class="col-sm-6"> 
+                <i> Please select how do you like to automate "{{questions.name}}"?</i>
+                <select name="{{questions.questionCode}}" id="" class="form-select" required>
+                  <option selected disabled >Open this select menu</option>
+                  <option value="">Randomize</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <i>How many time i should post survey:<input required type="text" name="{{questions.questionCode}}_copies" class="form-control" placeholder="Please Enter Number"></i>
+              </div>
+            </div>
+          {%endif%}
+        {% endfor %}
+      </ol>
+      <div class="row justify-content-center">
+        <div class="col-4 d-grid">
+          <button type="submit" class="btn btn-info mt-5">Submit</button>
+        </div>
+      </div>
+    {%endif%}
+    
+  </form>
+  
+  <!-- {{data}} -
+  <!-- <h1>{{heading}}</h1> -->
+  <!-- {% if heading|length > 0 %}
+      <h1>{{heading}}</h1>
+    {% if data|length > 0 %}
+      {%for selects in data%} 
+      
+    <select name="" id="">
+    {% for options in selects %}
+      <option >{{options.value}}</option>
+    {% endfor %} 
+    </select>
+    {% endfor %}
+    {%endif%}
+  {%endif%} -->
+  
+  
+    {% endblock %}

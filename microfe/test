@@ -1,0 +1,7 @@
+clear
+
+# first step
+# pip install nose requests
+
+export SKIP_REAL=True
+nosetests --verbosity=2 project

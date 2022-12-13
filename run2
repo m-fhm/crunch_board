@@ -1,0 +1,5 @@
+# create environment for windows try (python -m venv virtual) in cmd
+# activate environmentfor windows try (.\virtual\Scripts\activate) type in cmd and enter
+# install packages type ( pip install -r requirements.txt) make sure you are approaching requirements.txt in x3-csrdashboard
+cd microfe
+python manage.py runserver 7080  --settings=microfe_main

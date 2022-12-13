@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% block content %}  
+  <div class="row justify-content-center">
+    {% if mail|length > 0 %}
+    <div class="alert alert-success alert-dismissible fade show" data-auto-dismiss role="alert">
+      <strong>Success!</strong> Password Reset Notification sent on this email {{mail}}.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {%endif%}
+    {% if error|length > 0 %}
+    <div class="alert alert-danger alert-dismissible fade show" data-auto-dismiss role="alert">
+      <strong>Oops!</strong> Invalid action please provide proper mail, <i>{{error}}</i>.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {%endif%}
+    <h1 class="d-flex justify-content-center mb-4">User Password Reset Notification</h1>
+    <div class="col-4">
+      <form action="resetpassword" method="POST" class="d-grid needs-validation" novalidate>
+          <input type="email" id="reset"  class="form-control" name="user_mail" placeholder="Enter user e-mail" aria-describedby="emailHelp" required>
+          <div id="emailHelp" class="form-text mb-2">Password reset mail will be send to the given email that is registred </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>  
+{%  endblock %}

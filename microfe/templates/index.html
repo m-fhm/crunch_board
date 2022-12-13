@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ title }}</title>
+  <!-- CSS only -->
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/094198ebbd.js" crossorigin="anonymous"></script>
+  <!-- <style>
+    .rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+  </style> -->
+</head>
+<body>
+  <div class="container mb-5">
+    {% if token_error|length > 0 %}
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="alert alert-danger alert-dismissible fade show" data-auto-dismiss role="alert">
+        <strong>Oops!</strong> <i>{{token_error}}</i>.
+        <a href="https://ripe.ai/x10/signin" class="btn btn-outline-primary mx-3">Login</a>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% else %}
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-info mb-5">
+        <a class="navbar-brand" href="#">CSR Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+              <a class="nav-link ms-3" href="resetpassword"> User Tasks </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Poll
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="poll_private">Hide</a></li>
+                <li><a class="dropdown-item"  href="poll">Publicise</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ms-3" href="survey">Survey</a>
+            </li>
+          </ul> 
+        </div>
+      <h5 class="text-primary me-2 align-text-bottom">Logout</h5> <a href="logout" class="me-5"><span class="fas fa-sign-out-alt fa-2x"></span></a>
+      </nav>
+
+
+
+
+      
+      <!-- <h1>Index: {{ title }}</h1>
+      <hr>
+      <p>Code: {{ code }}</p>
+      <p></p>
+
+      -->
+      <!-- <p><a href="/">Home</a> | <a href="/about/">About</a>  | <a href="/reports_funnel_summary/">reports_funnel_summary</a>  | <a href="/dashboard_csr/">Dashboard CSR</a> </p> -->
+
+      {%  block content %}
+
+
+
+
+      {%  endblock %}
+    {%endif%}
+  </div>
+<!-- <script>
+  (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+  var alertNode = document.querySelector('.alert')
+var alert = bootstrap.Alert.getInstance(alertNode)
+alert.dispose()
+</script> -->
+  <!-- JavaScript Bundle with Popper -->
+<!-- JavaScript Bundle with Popper -->
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>

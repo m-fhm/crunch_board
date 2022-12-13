@@ -1,0 +1,11 @@
+# mkdir reportsui
+# 
+pip install django
+django-admin startproject microfe
+cd microfe
+# DjangoDocker
+
+# python manage.py startapp reports_funnel_summary
+# python manage.py startapp dashboard_csr
+# python manage.py migrate
+# python manage.py createsuperuser
